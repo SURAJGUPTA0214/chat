@@ -1,25 +1,24 @@
-import logo from './logo.svg';
+import LoginForm from './components/LoginForm';
 import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Chat from './Chat';
 
-function App() {
+const projectID = '536059cc-bbd9-4ffe-8713-ad202efeb12f';
+
+const App = () => {
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+        
+          <Route path="/" element={(localStorage.getItem('username') === null ) ? <LoginForm /> : <Chat />} />
+         
+        </Routes>
+      </BrowserRouter>
+    </>
   );
-}
+};
 
+// infinite scroll, logout, more customizations...
 export default App;
