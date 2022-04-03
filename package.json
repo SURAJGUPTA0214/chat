@@ -1,8 +1,12 @@
+
 {
   "name": "chat",
-  "homepage": "http://SURAJGUPTA0214.github.io/chat",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "14.17.1",
+    "npm": "6.14.13"
+  },
   "dependencies": {
     "@ant-design/icons": "^4.3.0",
     "@material-ui/core": "^4.12.3",
