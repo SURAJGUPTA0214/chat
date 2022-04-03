@@ -3,15 +3,31 @@ import { useState } from "react";
 
 const MyMessage = ({ message }) => {
   const [showEncode, setShowEncode] = useState(false);
+  const [showImg, setshowImg] = useState(true);
 
   if (message.attachments && message.attachments.length > 0) {
     return (
-      <img
-        src={message.attachments[0].file}
-        alt="message-attachment"
-        className="message-image"
-        style={{ float: 'right' }}
-      />
+      <>
+        {
+          (showImg) ?
+        
+            <img
+              onMouseEnter={() => setshowImg(false)} 
+              src={message.attachments[0].file}
+              alt="message-attachment"
+              className="message-image"
+              style={{ float: 'right' }}
+            />
+            : 
+           <div  style={{ float: 'right', color: 'white', backgroundColor: '#3B2A50', width: '50%' }} onMouseOut={()=> setshowImg(true)}>
+            <h3 style={{textAlign:'center', marginBottom:'5px', }}>Encrypted Image File</h3>
+            <textarea rows={3} style={{ width: '100%', border: 'none' }} className="encrypted">
+               {Base64.encode(message.attachments[0].file)}
+            </textarea>
+          </div>
+        }
+        
+        </>
     );
   } 
   var CryptoJS = require("crypto-js");
